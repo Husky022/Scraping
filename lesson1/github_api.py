@@ -1,8 +1,11 @@
 import requests
 import json
 
-user = 'Husky022'
+user = 'Husky0222'
 req = requests.get(f'https://api.github.com/users/{user}/repos')
+if req.status_code == 404:
+    raise Exception(f'User {user} not found!')
+
 req_json = json.loads(req.text)
 
 result = []
