@@ -1,7 +1,7 @@
 import requests
 import json
 
-user = 'Husky0222'
+user = 'Husky022'
 req = requests.get(f'https://api.github.com/users/{user}/repos')
 if req.status_code == 404:
     raise Exception(f'User {user} not found!')
@@ -18,5 +18,5 @@ for element in req_json:
 user_repos[user] = repos
 print(user_repos)
 
-with open(f'{user}_repos.json', 'a') as file:
+with open(f'{user}_repos.json', 'w') as file:
     json.dump(user_repos, file, indent=4)
