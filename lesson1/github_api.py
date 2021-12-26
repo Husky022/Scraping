@@ -1,5 +1,6 @@
 import requests
 import json
+from pprint import pprint
 
 user = 'Husky022'
 req = requests.get(f'https://api.github.com/users/{user}/repos')
@@ -16,7 +17,7 @@ for element in req_json:
     repos[element['name']] = element['html_url']
 
 user_repos[user] = repos
-print(user_repos)
+pprint(user_repos)
 
 with open(f'{user}_repos.json', 'w') as file:
     json.dump(user_repos, file, indent=4)
